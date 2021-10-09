@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background: url("/images/trees.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+}
+html{
+    filter: blur(2px);
+}
+
+#egg{
+    filter: blur(0px);
+    width: 18vh;
+    height: 19vh;
+}
+
+/* #background{
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-size: 600px;
+} */
+
