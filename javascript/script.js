@@ -44,25 +44,39 @@ setInterval(function(){ move(basket2) }, 15);
 setInterval(function(){ move(basket3) }, 15);
 
 var keyStroke = null;
-window.addEventListener("keydown", (event) => { keyStroke = event.key; eggDrop(keyStroke);});
+window.addEventListener("keydown", (event) => { keyStroke = event.key; eggDrop(keyStroke); console.log(keyStroke)});
 
-var c1 = 0, c2 = 0, close = 0;
+var c = 0, c2 = 0, close = 0, angle = 0;
 
 function eggDrop(keyStroke){
-    if (keyStroke == " "){
-        // for(let i = 0; i<4; i++) egg.style.top = egg.offsetTop + 20 + "px";
+    if (keyStroke == " ")
         var timer = setInterval(drop, 20);
 
-        function drop(){
-            egg.style.top = egg.offsetTop + 5 + "px";
-            if (egg.style.top > window.innerHeight)
-                clearInterval(timer);
+    function drop(){
+
+        angle += 9.5;
+        egg.style.transform = "rotate(" + angle + "deg)";
+        if(c != 13){
+            egg.style.top = egg.offsetTop - 5 + "px";
+            egg.style.left = egg.offsetLeft - 5 + "px";
+            c++;
         }
 
-    }
-    if (egg.offsetTop > window.innerHeight){
-        alert("Game Over :(");
-        location.reload();
-    }
+    else{
+        if (c2 != 2)
+        egg.style.left = egg.offsetLeft - 5 + "px";
+        c2++;
 
+        egg.style.top = egg.offsetTop + 5 + "px";
+
+        if (egg.style.top > window.innerHeight){
+            clearInterval(timer);
+            // var evt = new KeyboardEvent('keydown', {'keyCode':65, 'which':65}); 
+            // document.dispatchEvent (evt);
+            // window.addEventListener("keydown", (event) => { keyStroke = event.key; console.log(keyStroke)});
+            alert("Game Over :(");
+            location.reload();
+                         }
+            }
+    } 
 }
