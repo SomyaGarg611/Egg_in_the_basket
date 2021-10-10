@@ -5,27 +5,18 @@
     background: url("/images/trees.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
-    
-}
-html{
-    filter: blur(2px);
 }
 
-#egg{
-    filter: blur(0px);
-    width: 18vh;
-    height: 19vh;
+#screen img{
+    width: 16vh;
+    height: 17vh;
+    background: none;
+    position: absolute;
 }
 
-/* #background{
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 100%;
-    height: ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-size: 600px;
-} */
+.basket{
+    width: 20vh;
+    height: 22vh;
+    left: ;
+}
 
