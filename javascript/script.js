@@ -24,18 +24,6 @@ if (obj.offsetLeft == (window.innerWidth - 80) )
 else if (obj.offsetLeft == 0)
     flag = 0;
 
-// 2
-// if(!flag2)
-//     obj.style.left = obj.offsetLeft + 5 + "px";
-// else
-//    obj.style.left = obj.offsetLeft - 5 + "px";
-
-// if (obj.offsetLeft == (window.innerWidth - 80) )
-//     flag2 = 1;
-
-// else if (obj.offsetLeft == 0)
-//     flag2 = 0;
-
 }
 
 setInterval(function(){ move(egg); }, 15);
@@ -54,7 +42,7 @@ function eggDrop(keyStroke){
 
     function drop(){
 
-        angle += 9.5;
+        angle += 8;
         egg.style.transform = "rotate(" + angle + "deg)";
         if(c != 13){
             egg.style.top = egg.offsetTop - 5 + "px";

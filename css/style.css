@@ -15,8 +15,20 @@
     position: absolute;
 }
 
-/* .basket{
-    width: 20vh;
-    height: 22vh;
-} */
+#screen p{
+    color:aquamarine;
+}
+
+.basket{
+    width: 30vh;
+    height: 32vh;
+    z-index: -1;
+}
+
+#egg{
+    height: 1px;
+    background-size: 0px;
+    position: none;
+    bottom: 5px; 
+}
 
