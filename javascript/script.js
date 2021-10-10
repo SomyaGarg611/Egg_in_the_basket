@@ -7,24 +7,43 @@ basket.style.top = "3%";
 basket2.style.top = "41%";
 basket3.style.top = "81% ";
 
-var pos = 0;
 var flag = 0;
 
 function move(obj){
-    if(pos > 1160) 
+
+if (obj.offsetLeft == (window.innerWidth - 80) )
     flag = 1;
-    
-    else if(pos == 0)
+
+else if (obj.offsetLeft == 0)
     flag = 0;
-    
-    if(flag) pos--;
-    else pos++;
-    
-    console.log(pos);
-    obj.style.left = pos + "px";
+
+if(!flag)
+     obj.style.left = obj.offsetLeft + 5 + "px";
+else
+    obj.style.left = obj.offsetLeft - 5 + "px";
+
+console.log(obj.offsetLeft);
+
 }
 
-setInterval(function(){ move(egg); }, 15);
-setInterval(function(){ move(basket) }, 15);
-setInterval(function(){ move(basket2) }, 15);
-setInterval(function(){ move(basket3) },15);
+function move2(obj){
+
+    if (obj.offsetLeft == (window.innerWidth - 80) )
+        flag = 1;
+    
+    else if (obj.offsetLeft == 0)
+        flag = 0;
+    
+    if(!flag)
+         obj.style.left = obj.offsetLeft + 5 + "px";
+    else
+        obj.style.left = obj.offsetLeft - 5 + "px";
+    
+    console.log(obj.offsetLeft);
+    
+    }
+
+setInterval(function(){ move(egg); }, 2);
+setInterval(function(){ move(basket) }, 2);
+setInterval(function(){ move2(basket2) }, 8);
+setInterval(function(){ move(basket3) }, 16);

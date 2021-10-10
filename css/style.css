@@ -5,6 +5,7 @@
     background: url("/images/trees.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
+    overflow: hidden;
 }
 
 #screen img{
@@ -12,6 +13,7 @@
     height: 17vh;
     background: none;
     position: absolute;
+    overflow: hidden;
 }
 
 .basket{
