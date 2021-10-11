@@ -51,17 +51,16 @@ function eggDrop(keyStroke){
         }
 
     else{
-        if (c2 != 2)
+        if (c2 != 2){
         egg.style.left = egg.offsetLeft - 5 + "px";
         c2++;
-
+    }
         egg.style.top = egg.offsetTop + 5 + "px";
-
-        if (egg.style.top > window.innerHeight){
-            alert("Game Over :(");
-            console.log("done");
-            location.reload();
-                         }
-            }
-    } 
+    if (egg.offsetTop > window.innerHeight){
+        alert("Game over :(");
+        clearInterval(timer);
+        location.reload();
+    }
+    }
+}
 }
