@@ -32,7 +32,7 @@ setInterval(function(){ move(basket2) }, 15);
 setInterval(function(){ move(basket3) }, 15);
 
 var keyStroke = null;
-window.addEventListener("keydown", (event) => { keyStroke = event.key; eggDrop(keyStroke); console.log(keyStroke)});
+window.addEventListener("keydown", (event) => { keyStroke = event.key; eggDrop(keyStroke);});
 
 var c = 0, c2 = 0, close = 0, angle = 0;
 
@@ -58,11 +58,8 @@ function eggDrop(keyStroke){
         egg.style.top = egg.offsetTop + 5 + "px";
 
         if (egg.style.top > window.innerHeight){
-            clearInterval(timer);
-            // var evt = new KeyboardEvent('keydown', {'keyCode':65, 'which':65}); 
-            // document.dispatchEvent (evt);
-            // window.addEventListener("keydown", (event) => { keyStroke = event.key; console.log(keyStroke)});
             alert("Game Over :(");
+            console.log("done");
             location.reload();
                          }
             }
