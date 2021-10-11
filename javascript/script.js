@@ -8,47 +8,58 @@ basket2.style.top = "41%";
 basket3.style.top = "81% ";
 egg.style.top = "0%";
 
-var flag1 = 0, flag2 = 0, flag3 = 0, flag4 = 0, flag = 0;
+var flag1 = 0;
 
-function move(basket2){
-if(!flag)
-    basket2.style.left = basket2.offsetLeft + 5 + "px";
-else
-   basket2.style.left = basket2.offsetLeft - 5 + "px";
-
-
-if (obj.offsetLeft >= (window.innerWidth - 80) )
-if (basket2.offsetLeft >= (window.innerWidth - 80) )
-    flag = 1;
-
-else if (basket2.offsetLeft == 0)
-    flag = 0;
-
-}
-
-setInterval(function(){ move(egg); }, 3);
-setInterval(function(){ move(basket) }, 3);
-setInterval(function(){ move(basket2) }, 3);
-setInterval(function(){ move(basket3) }, 3);
 function move(basket){
-    if(!flag)
+    if(!flag1)
         basket.style.left = basket.offsetLeft + 5 + "px";
     else
        basket.style.left = basket.offsetLeft - 5 + "px";
     
     
-    if (basket.offsetLeft >= (window.innerWidth - 80) )
-        flag = 1;
+    if (basket.offsetLeft >= (window.innerWidth - 90) )
+        flag1 = 1;
     
     else if (basket.offsetLeft == 0)
-        flag = 0;
-    
+        flag1 = 0;
     }
+
+var flag2 = 0;
+
+    function move2(basket){
+        if(!flag2)
+            basket.style.left = basket.offsetLeft + 5 + "px";
+        else
+           basket.style.left = basket.offsetLeft - 5 + "px";
+        
+        if (basket.offsetLeft >= (window.innerWidth - 90) )
+            flag2 = 1;
+        
+        else if (basket.offsetLeft == 0)
+            flag2 = 0;
+        }
     
-setInterval(function(){ move(egg) }, 15);
-setInterval(function(){ move(basket) }, 55);
-setInterval(function(){ move(basket2) }, 15);
-setInterval(function(){ move(basket3) }, 25);
+var flag3 = 0;
+        function move3(basket){
+            if(!flag3)
+                basket.style.left = basket.offsetLeft + 5 + "px";
+            else
+               basket.style.left = basket.offsetLeft - 5 + "px";
+            
+            
+            if (basket.offsetLeft >= (window.innerWidth - 90) )
+                flag3 = 1;
+            
+            else if (basket.offsetLeft == 0)
+                flag3 = 0;
+            }
+var speed1 = Math.random()*10 + 10,
+            speed2 = Math.random()*20,
+                    speed3 = Math.random()*5 + 30;
+setInterval(function(){ move(egg) }, speed1);
+setInterval(function(){ move(basket) }, speed1);
+setInterval(function(){ move2(basket2) }, speed2);
+setInterval(function(){ move3(basket3) }, speed3);
 
 var keyStroke = null;
 window.addEventListener("keydown", (event) => { keyStroke = event.key; eggDrop(keyStroke);});
@@ -97,5 +108,4 @@ function eggDrop(keyStroke){
     }
     }
 }
-
 }
