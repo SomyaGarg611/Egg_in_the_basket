@@ -21,18 +21,12 @@
 }
 
 .basket{
-    width: 30vh;
-    height: 32vh;
+    /* width: 30vh;
+    height: 32vh; */
     z-index: -1;
 }
 
 #egg{
-    height: 1px;
-    background-size: 0px;
-    position: none;
-    bottom: 5px; 
+    width: 30vh;
+    height: 5vh;
 }
-#screen p{
-    font: bold;
-}
-
