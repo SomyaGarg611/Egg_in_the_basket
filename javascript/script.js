@@ -10,6 +10,10 @@ basket2.style.top = "41%";
 basket3.style.top = "81% ";
 egg.style.top = "0%";
 
+scoreboard.innerHTML = `SCORE : 0`;
+scoreboard.style.backgroundColor = "blueviolet";
+scoreboard.style.borderRadius = "35%";
+
 var flag1 = 0;
 
 function move(basket){
@@ -68,7 +72,7 @@ setInterval(function(){ move3(basket3) }, speed3);
 var keyStroke = null;
 window.addEventListener("keydown", (event) => { keyStroke = event.key; eggDrop(keyStroke);});
 
-var c = 0, c2 = 0, close = 0, angle = 0, level = 1, press = 0, maxScore = 58;
+var c = 0, c2 = 0, close = 0, angle = 0, level = 1, press = 0, maxScore = 58, level2Fail = 0;
 
 function eggDrop(keyStroke){
 if (keyStroke == " " /*&& press == 0*/){
@@ -83,7 +87,7 @@ function drop(){
 
 egg.style.top = egg.offsetTop + 5 + "px";
 
-if (level == 1 && egg.offsetTop > basket2.offsetTop && egg.offsetTop < (basket2.offsetTop + 45) && egg.offsetLeft >= (basket2.offsetLeft - 50) && egg.offsetLeft <= (basket2.offsetLeft + 50)){
+if (level == 1 && egg.offsetTop > (basket2.offsetTop - 20) && egg.offsetTop < (basket2.offsetTop + 45) && egg.offsetLeft >= (basket2.offsetLeft - 50) && egg.offsetLeft <= (basket2.offsetLeft + 50)){
 
 level = 2;
 clearInterval(timer);
@@ -92,17 +96,31 @@ egg.style.left = basket2.style.left;
 eggSpeed = setInterval(function(){ move2(egg) }, speed2);
 egg.style.top = "39%";
 score++;
+scoreboard.innerHTML = `SCORE : ${score}`;
 if (score > maxScore) maxScore = score;
 }
 
-else if (level == 2 && egg.offsetTop > basket3.offsetTop && egg.offsetTop < (basket3.offsetTop + 45) && egg.offsetLeft >= (basket3.offsetLeft - 50) && egg.offsetLeft <= (basket3.offsetLeft + 50)){
+// else{
+//     level = 2;
+//     level2Fail = 1;
+//     console.log("fail");
+//     }
+
+
+if (level == 2 && egg.offsetTop > basket3.offsetTop && egg.offsetTop < (basket3.offsetTop + 43) && egg.offsetLeft >= (basket3.offsetLeft - 43) && egg.offsetLeft <= (basket3.offsetLeft + 43)){
 level = 3;
 clearInterval(timer);
 egg.style.transform = "rotate(0deg)";
 egg.style.left = basket3.style.left;
 eggSpeed = setInterval(function(){ move3(egg) }, speed3);
 egg.style.top = "79%";
+
+// if(level2Fail)
+// score += 3;
+// else
 score++;
+
+scoreboard.innerHTML = `SCORE : ${score}`;
 // press = 0;
 if (score > maxScore) maxScore = score;
 
