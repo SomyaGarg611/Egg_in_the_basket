@@ -18,16 +18,16 @@
 #scoreboard{
     color: aquamarine;
     font-size: 220%;
-    margin-left: 44%;
-    margin-top: 13%;
-    padding: 2% 6%;
+    margin-left: 38%;
+    margin-top: 12%;
+    padding: 1.5% 6%;
     background: none;
     position: absolute;
+    opacity: 0.85;
+    
 }
 
 .basket{
-    /* width: 30vh;
-    height: 32vh; */
     z-index: -1;
 }
 
