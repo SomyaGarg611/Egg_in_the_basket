@@ -4,6 +4,11 @@ var basket2 = document.getElementById("basket2");
 var basket3 = document.getElementById("basket3");
 var scoreboard = document.getElementById("scoreboard");
 
+var flag1 = 0, flag2 = 0, flag3 = 0, score = 0, c = 0, c2 = 0, close = 0, angle = 0, level = 1, press = 0, maxScore = 72, lives = 5;
+
+var speed1 = Math.random()*25 + 12,
+                speed2 = Math.random()*15 + 22,
+                        speed3 = Math.random()*5 + 32;
 
 basket.style.top = "3%";
 basket2.style.top = "41%";
@@ -15,7 +20,7 @@ scoreboard.style.backgroundColor = "#9000ff";
 scoreboard.style.borderRadius = "50%";
 scoreboard.style.zIndex = "-2";
 
-var flag1 = 0;
+
 
 function move(basket){
     basket.style.left = (basket.offsetLeft )+"px";
@@ -34,7 +39,7 @@ function move(basket){
         flag1 = 0;
     }
 
-var flag2 = 0;
+
 
 function move2(basket){
     if(!flag2)
@@ -49,7 +54,7 @@ function move2(basket){
         flag2 = 0;
     }
     
-var flag3 = 0, score = 0;
+
 function move3(basket){
     if(!flag3)
         basket.style.left = basket.offsetLeft + 3 + "px";
@@ -64,9 +69,7 @@ function move3(basket){
         flag3 = 0;
     }
 
-var speed1 = Math.random()*25 + 12,
-            speed2 = Math.random()*15 + 22,
-                    speed3 = Math.random()*5 + 32;
+
 
 
 var eggSpeed = setInterval(function(){ move(egg) }, speed1);
@@ -77,19 +80,20 @@ setInterval(function(){ move3(basket3) }, speed3);
 var keyStroke = null;
 window.addEventListener("keydown", (event) => { keyStroke = event.key; eggDrop(keyStroke);});
 
-var c = 0, c2 = 0, close = 0, angle = 0, level = 1, press = 0, maxScore = 58;
+
 
 function eggDrop(keyStroke){
-if (keyStroke == " " /*&& press == 0*/){
+if (keyStroke == " " && !press){
+    press = 1;
     var timer = setInterval(drop, 20);
-    // press++;
 }
 
 function drop(){
-    clearInterval(eggSpeed);
-    angle += 7;
-    egg.style.transform = `rotate(${angle}deg)`;
 
+clearInterval(eggSpeed);
+
+angle += 7;
+egg.style.transform = `rotate(${angle}deg)`;
 egg.style.top = egg.offsetTop + 5 + "px";
 
 if (level == 1 && egg.offsetTop > (basket2.offsetTop - 20) && egg.offsetTop < (basket2.offsetTop + 45) && egg.offsetLeft >= (basket2.offsetLeft - 50) && egg.offsetLeft <= (basket2.offsetLeft + 50)){
@@ -103,43 +107,65 @@ egg.style.top = "39%";
 score++;
 scoreboard.innerHTML = `SCORE : ${score}`;
 if (score > maxScore) maxScore = score;
+press = 0;
 }
 
 
 if (level == 2 && egg.offsetTop > basket3.offsetTop && egg.offsetTop < (basket3.offsetTop + 43) && egg.offsetLeft >= (basket3.offsetLeft - 43) && egg.offsetLeft <= (basket3.offsetLeft + 43)){
-level = 3;
-clearInterval(timer);
-egg.style.transform = "rotate(0deg)";
-egg.style.left = basket3.style.left;
-eggSpeed = setInterval(function(){ move3(egg) }, speed3);
-egg.style.top = "79%";
+// level = 3;
 
-// if(level2Fail)
-// score += 3;
-// else
+// egg.style.left = basket3.style.left;
+// eggSpeed = setInterval(function(){ move3(egg) }, speed3);
+// egg.style.top = "79%";
+
 score++;
 
 scoreboard.innerHTML = `SCORE : ${score}`;
-// press = 0;
 if (score > maxScore) maxScore = score;
 
-// setTimeout(function() {console.log("reached bottom")}, 5000);
+clearInterval(timer);
 clearInterval(eggSpeed);
+egg.style.transform = "rotate(0deg)";
 egg.style.left = basket.style.left;
 egg.style.top = "0%";
 eggSpeed = setInterval(function(){ move(egg) }, speed1);
 level = 1;
-// press = 0;
+press = 0;
 // speed1 -= 10;
 // speed2 -= 10;
 // speed3 -= 10;
 }
 
 if (egg.offsetTop > window.innerHeight){
+    lives--;
+
+    if (!lives){
     alert(`                                             GAME OVER :(\n\n                                            YOUR SCORE : ${score}\n\n                                            MAX SCORE : ${maxScore}`);
+    press = 0;
     clearInterval(timer);
     clearInterval(eggSpeed);
     location.reload();
+    }
+    else{
+        alert(`                                             1 LIFE LOST
+        \n\n                                             YOU HAVE ${lives} LIFE(S) REMAINING`);
+        if (level == 1){
+            clearInterval(timer);
+            egg.style.top = "0%";
+            eggSpeed = setInterval(function(){ move(egg) }, speed1);
+            egg.style.left = basket.style.left;
+            egg.style.transform = "rotate(0deg)";
+            press = 0;
+        }
+        else if (level == 2){
+            clearInterval(timer);
+            egg.style.top = "39%";
+            egg.style.transform = "rotate(0deg)";
+            eggSpeed = setInterval(function(){ move2(egg) }, speed2);
+            egg.style.left = basket2.style.left;
+            press = 0;
+        }
+    }
 }
 }
 
