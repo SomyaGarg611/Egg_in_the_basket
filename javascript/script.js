@@ -125,9 +125,9 @@ scoreboard.innerHTML = `SCORE : ${score}`;
 if (score > maxScore) maxScore = score;
 press = 0;
 
-function shiftUp(basket){
-basket.style.top = basket.offsetTop - 3 + "px";
-
+function shiftUp(bsk){
+bsk.style.top = bsk.offsetTop - 3 + "px";
+console.log("YO:)");
 if (basket2.style.top <= "0%"){
 
 clearInterval(up1);
