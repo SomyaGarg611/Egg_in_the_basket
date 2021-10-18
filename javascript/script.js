@@ -5,11 +5,11 @@ var basket3 = document.getElementById("basket3");
 var scoreboard = document.getElementById("scoreboard");
 var life = document.getElementById("lives");
 
-var flag1 = 0, flag2 = 0, flag3 = 0, score = 0, c = 0, c2 = 0, close = 0, angle = 0, level = 1, press = 0, maxScore = 72, lives = 5, count = 0, lvl = 0, lvl2 = lvl+1, lvl3 = lvl+2;
+var flag1 = 0, flag2 = 0, flag3 = 0, score = 0, angle = 0, level = 1, press = 0, maxScore = 72, lives = 5, lvl = 0, lvl2, lvl3;
 
-var speed1 = Math.random()*25 + 10,
-                speed2 = Math.random()*15 + 20,
-                        speed3 = Math.random()*7 + 27;
+var speed1 = Math.random()*13 + 10,
+                speed2 = Math.random()*6 + 4,
+                        speed3 = Math.random()*2 + 20;
 
 basket.style.top = "3%";
 basket2.style.top = "41%";
@@ -31,13 +31,16 @@ life.style.zIndex = "-2";
 function move(basket){
 basket.style.left = basket.offsetLeft +"px";
 if(!flag1)
-    basket.style.left = basket.offsetLeft + 3 + "px";
+    basket.style.left = basket.offsetLeft + 1.5 + "px";
 else
-    basket.style.left = basket.offsetLeft - 3 + "px";
+    basket.style.left = basket.offsetLeft - 1.5 + "px";
 
-if (basket.offsetLeft > (window.innerWidth - 90) )
+if (basket.offsetLeft > (window.innerWidth - 104) ){
     flag1 = 1;
-else if (basket.offsetLeft ==0)
+    // if(level == 1)
+    //     egg.style.left = egg.offsetLeft - 2.85 + "px";
+}
+else if (basket.offsetLeft <= 0)
     flag1 = 0;
 }
 
@@ -45,29 +48,30 @@ else if (basket.offsetLeft ==0)
 
 function move2(basket){
 if(!flag2)
-    basket.style.left = basket.offsetLeft + 3 + "px";
+    basket.style.left = basket.offsetLeft + 1.5+ "px";
 else
-    basket.style.left = basket.offsetLeft - 3 + "px";
+    basket.style.left = basket.offsetLeft - 1.5 + "px";
 
-if (basket.offsetLeft >= (window.innerWidth - 90) )
+if (basket.offsetLeft >= (window.innerWidth - 104) )
     flag2 = 1;
 
-else if (basket.offsetLeft == 0)
+else if (basket.offsetLeft <= 0){
     flag2 = 0;
+}
 }
 
 
 function move3(basket){
 if(!flag3)
-    basket.style.left = basket.offsetLeft + 3 + "px";
+    basket.style.left = basket.offsetLeft + 1.5 + "px";
 else
-    basket.style.left = basket.offsetLeft - 3 + "px";
+    basket.style.left = basket.offsetLeft - 1.5 + "px";
 
 
-if (basket.offsetLeft >= (window.innerWidth - 90) )
+if (basket.offsetLeft >= (window.innerWidth - 104) )
     flag3 = 1;
 
-else if (basket.offsetLeft == 0)
+else if (basket.offsetLeft <= 0)
     flag3 = 0;
 }
 
@@ -86,7 +90,7 @@ window.addEventListener("keydown", (event) => { keyStroke = event.key; eggDrop(k
 function eggDrop(keyStroke){
 if (keyStroke == " " && !press){
     press = 1;
-    var timer = setInterval(drop, 20);
+    var timer = setInterval(drop, 18);
 }
 
 
@@ -126,8 +130,7 @@ if (score > maxScore) maxScore = score;
 press = 0;
 
 function shiftUp(bsk){
-bsk.style.top = bsk.offsetTop - 3 + "px";
-console.log("YO:)");
+bsk.style.top = bsk.offsetTop - 1.5 + "px";
 if (basket2.style.top <= "0%"){
 
 clearInterval(up1);
@@ -168,10 +171,10 @@ level = 2;
 }
 
 }
-var up1 = setInterval(function(){ shiftUp(egg) }, 12);
-var up2 = setInterval(function(){ shiftUp(basket) }, 12);
-var up3 = setInterval(function(){ shiftUp(basket2) }, 12);
-var up4 = setInterval(function(){ shiftUp(basket3) }, 12);
+var up1 = setInterval(function(){ shiftUp(egg) }, 8);
+var up2 = setInterval(function(){ shiftUp(basket) }, 8);
+var up3 = setInterval(function(){ shiftUp(basket2) }, 8);
+var up4 = setInterval(function(){ shiftUp(basket3) }, 8);
 
 }
 
@@ -179,31 +182,39 @@ if (egg.offsetTop > window.innerHeight){
     lives--;
 
     if (!lives){
+    life.innerHTML = `LIVES : ${lives}`;
     alert(`                                             GAME OVER :(\n\n                                            YOUR SCORE : ${score}\n\n                                            MAX SCORE : ${maxScore}`);
+
     press = 0;
     clearInterval(timer);
     clearInterval(eggSpeed);
     location.reload();
     }
+
     else{
+        if (lives == 1)
+        life.innerHTML = `LIFE : ${lives}`;
+        else
+        life.innerHTML = `LIVES : ${lives}`;
         alert(`                                             1 LIFE LOST
         \n\n                                             YOU HAVE ${lives} LIFE(S) REMAINING`);
-        if (level == 1){
-            clearInterval(timer);
-            egg.style.top = "0%";
-            eggSpeed = setInterval(function(){ move(egg) }, speed1);
-            egg.style.left = basket.style.left;
-            egg.style.transform = "rotate(0deg)";
-            press = 0;
-        }
-        else if (level == 2){
-            clearInterval(timer);
-            egg.style.top = "39%";
-            egg.style.transform = "rotate(0deg)";
-            eggSpeed = setInterval(function(){ move2(egg) }, speed2);
-            egg.style.left = basket2.style.left;
-            press = 0;
-        }
+
+    if (level == 1){
+        clearInterval(timer);
+        egg.style.top = "0%";
+        eggSpeed = setInterval(function(){ move(egg) }, speed1);
+        egg.style.left = basket.style.left;
+        egg.style.transform = "rotate(0deg)";
+        press = 0;
+    }
+    else if (level == 2){
+        clearInterval(timer);
+        egg.style.top = "39%";
+        egg.style.transform = "rotate(0deg)";
+        eggSpeed = setInterval(function(){ move2(egg) }, speed2);
+        egg.style.left = basket2.style.left;
+        press = 0;
+    }
     }
 }
 }
