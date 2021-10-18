@@ -6,11 +6,12 @@
     background-repeat: no-repeat;
     background-size: 100%;
     overflow: hidden;
+    font-family: Lobster, Helvetica;
 }
 
 #screen img{
-    width: 16vh;
-    height: 17vh;
+    width: 100px;
+    height: 100px;
     background: none;
     position: absolute;
 }
@@ -29,9 +30,9 @@
 #lives{
     color: aquamarine;
     font-size: 220%;
-    margin-left: 38%;
-    margin-top: 34%;
-    padding: 1.5% 6%;
+    margin-left: 38.5%;
+    margin-top: 32%;
+    padding: 1.5% 6.3%;
     background: none;
     position: absolute;
     opacity: 0.85;
@@ -41,7 +42,7 @@
     z-index: -1;
 }
 
-#egg{
-    width: 30vh;
-    height: 5vh;
-}
+/* #egg{
+    width: 10vh;
+    height: 12vh;
+} */
