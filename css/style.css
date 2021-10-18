@@ -24,9 +24,19 @@
     background: none;
     position: absolute;
     opacity: 0.85;
-    
 }
 
+#lives{
+    color: aquamarine;
+    font-size: 220%;
+    margin-left: 38%;
+    margin-top: 34%;
+    padding: 1.5% 6%;
+    background: none;
+    position: absolute;
+    opacity: 0.85;
+    z-index: -2;
+}
 .basket{
     z-index: -1;
 }
