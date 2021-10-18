@@ -17,9 +17,6 @@
 
 #screen p{
     color: aquamarine;
-<<<<<<< Updated upstream
-    
-=======
     font-size: 220%;
     margin-left: 38%;
     margin-top: 12%;
@@ -27,7 +24,6 @@
     background: none;
     position: absolute;
     opacity: 0.85;
->>>>>>> Stashed changes
 }
 
 #lives{
