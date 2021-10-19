@@ -5,8 +5,8 @@ var basket3 = document.getElementById("basket3");
 var scoreboard = document.getElementById("scoreboard");
 var life = document.getElementById("lives");
 
-egg.style.width = "88px";
-egg.style.height = "108px";
+egg.style.width = "80px";
+egg.style.height = "100px";
 
 var flag1 = 0, flag2 = 0, flag3 = 0, score = 0, angle = 0, level = 1, press = 0, maxScore = 72, lives = 5, lvl = 0, lvl2, lvl3;
 
@@ -18,6 +18,7 @@ basket.style.top = "4.3%";
 basket2.style.top = "41%";
 basket3.style.top = "81% ";
 egg.style.top = "0.25%";
+egg.style.left = "0.8%";
 
 scoreboard.innerHTML = "SCORE : 0";
 scoreboard.style.backgroundColor = "#9000ff";
@@ -112,7 +113,7 @@ if (level == 1 && egg.offsetTop > (basket2.offsetTop - 20) && egg.offsetTop < (b
 level = 2;
 clearInterval(timer);
 egg.style.transform = "rotate(0deg)";
-egg.style.left = basket2.style.left;
+egg.style.left = basket2.style.left ;
 eggSpeed = setInterval(function(){ move2(egg) }, speed2);
 egg.style.top = "37.5%";
 score++;
